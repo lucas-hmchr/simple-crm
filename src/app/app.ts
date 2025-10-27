@@ -1,10 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatSlideToggleModule],
+  imports: [RouterOutlet, MatToolbarModule, MatButtonModule, MatIcon, MatSidenavModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
