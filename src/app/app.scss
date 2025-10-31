@@ -23,3 +23,20 @@
     justify-content: center;
 }
 
+.menu-items{
+    list-style-type: none;
+    padding-left: 0;
+
+    >li {
+        display: flex;
+        align-items: center;
+        padding-inline: 16px;
+        height: 48px;
+        gap: 8px;
+        cursor: pointer;
+
+        &:hover{
+            background-color: rgba(219, 219, 219, 0.432);
+        }
+    }
+}
