@@ -1,3 +1,51 @@
-<button matFab class="add-user-button" matTooltip="Add a user" matTooltipShowDelay="1000" (click)="openDialog()">
-    <mat-icon>add</mat-icon>
+<!-- user.html -->
+<button mat-fab class="add-user-button"
+        matTooltip="Add a user" matTooltipShowDelay="1000"
+        (click)="openDialog()">
+  <mat-icon>add</mat-icon>
 </button>
+
+<mat-card class="example-card" appearance="outlined">
+  <!-- WICHTIG: async -->
+  <table mat-table [dataSource]="users$ | async" class="mat-elevation-z8">
+
+    <!-- firstName -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>firstName</th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+    </ng-container>
+
+    <!-- lastName -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>lastName</th>
+      <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+    </ng-container>
+
+    <!-- birthDate -->
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef>birthDate</th>
+      <td mat-cell *matCellDef="let element">{{ element.birthDate || '—' }}</td>
+    </ng-container>
+
+    <!-- adress -->
+    <ng-container matColumnDef="adress">
+      <th mat-header-cell *matHeaderCellDef>adress</th>
+      <td mat-cell *matCellDef="let element">{{ element.adress }}</td>
+    </ng-container>
+
+    <!-- zip -->
+    <ng-container matColumnDef="zip">
+      <th mat-header-cell *matHeaderCellDef>zip</th>
+      <td mat-cell *matCellDef="let element">{{ element.zip }}</td>
+    </ng-container>
+
+    <!-- city -->
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>city</th>
+      <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row        *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

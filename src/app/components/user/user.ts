@@ -8,10 +8,16 @@ import { MatIcon } from "@angular/material/icon";
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DialogAddUser } from '../dialog-add-user/dialog-add-user';
 import { User } from '../../models/user.class';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { Firestore } from '@angular/fire/firestore';
+import { Observable, tap } from 'rxjs';
+import { UsersService } from '../../services/users.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-user',
-  imports: [MatIcon, MatButtonModule, MatTooltipModule],
+  imports: [MatIcon, MatButtonModule, MatTooltipModule, MatCardModule, MatTableModule, AsyncPipe],
   templateUrl: './user.html',
   styleUrl: './user.scss',
 })
@@ -19,12 +25,20 @@ export class UserComponent {
 
   readonly dialog = inject(MatDialog);
   readonly name = model('');
+  fireStore = inject(Firestore);
 
   user = new User();
 
   constructor() {
-
+    console.log()
   }
+
+  private svc = inject(UsersService);
+  users$: Observable<User[]> = this.svc.users$().pipe(
+    tap(list => console.log('users from firestore:', list))
+  );
+
+  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'adress', 'zip', 'city'];
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddUser, {
