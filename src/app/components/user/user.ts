@@ -7,6 +7,7 @@ import {
 import { MatIcon } from "@angular/material/icon";
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DialogAddUser } from '../dialog-add-user/dialog-add-user';
+import { User } from '../../models/user.class';
 
 @Component({
   selector: 'app-user',
@@ -14,10 +15,12 @@ import { DialogAddUser } from '../dialog-add-user/dialog-add-user';
   templateUrl: './user.html',
   styleUrl: './user.scss',
 })
-export class User {
+export class UserComponent {
 
   readonly dialog = inject(MatDialog);
   readonly name = model('');
+
+  user = new User();
 
   constructor() {
 

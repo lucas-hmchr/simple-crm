@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule, MatDatepicker, MatDatepickerActions } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { User } from '../../models/user.class';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -27,6 +28,9 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 })
 export class DialogAddUser {
 
+  user = new User();
+  birthDate: Date|null = null;
+
   readonly dialogRef = inject(MatDialogRef<DialogAddUser>);
   // readonly data = inject(MAT_DIALOG_DATA);
   // readonly animal = model(this.data.name);
@@ -36,6 +40,7 @@ export class DialogAddUser {
   }
 
   createUser() {
-
+    this.user.birthDate = this.birthDate!.getTime();
+    console.log(this.user)
   }
 }
