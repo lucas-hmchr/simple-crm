@@ -1,10 +1,19 @@
-.add-user-button{
+.add-user-button {
     position: absolute;
     right: 56px;
     bottom: 56px;
     z-index: 90;
 }
 
-mat-card{
+mat-card {
     padding: 16px;
+}
+
+.mat-mdc-table .mat-mdc-row {
+  transition: background-color 120ms ease-in-out;
+}
+
+.mat-mdc-table .mat-mdc-row:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  cursor: pointer;
 }
