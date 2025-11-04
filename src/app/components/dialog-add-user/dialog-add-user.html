@@ -29,6 +29,12 @@
     </div>
     <div class="user-input-names">
         <mat-form-field appearance="outline" class="full-width">
+            <mat-label>E-Mail</mat-label>
+            <input [(ngModel)]="user.email" [disabled]="loading" matInput>
+        </mat-form-field>
+    </div>
+    <div class="user-input-names">
+        <mat-form-field appearance="outline" class="full-width">
             <mat-label>Street + House No.</mat-label>
             <input [(ngModel)]="user.street" [disabled]="loading" matInput>
         </mat-form-field>
@@ -45,6 +51,6 @@
     </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button matButton [disabled]="loading" (click)="closeDialog()">Cancel</button>
+    <button matButton [disabled]="loading" (click)="this.dialogRef.close()">Cancel</button>
     <button matButton [disabled]="loading" (click)="createUser()" cdkFocusInitial>Ok</button>
 </mat-dialog-actions>

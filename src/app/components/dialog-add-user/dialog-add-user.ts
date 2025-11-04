@@ -46,15 +46,10 @@ export class DialogAddUser {
 
   }
 
-  closeDialog() {
-
-  }
-
   createUser() {
     this.loading = true;
     this.user.birthDate = this.birthDate!.getTime();
     addDoc(this.userCollection, this.user.toJSON()).then((result: any) => {
-      console.log(result);
       this.loading = false;
       this.dialogRef.close();
     })

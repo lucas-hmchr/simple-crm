@@ -14,6 +14,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { Observable, tap } from 'rxjs';
 import { UsersService } from '../../services/users.service';
 import { AsyncPipe } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -29,16 +30,14 @@ export class UserComponent {
 
   user = new User();
 
-  constructor() {
-    console.log()
-  }
-
+  private router = inject(Router);
   private svc = inject(UsersService);
+  
   users$: Observable<User[]> = this.svc.users$().pipe(
     tap(list => console.log('users from firestore:', list))
   );
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'street', 'zipCode', 'city'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'zipCode', 'city'];
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddUser, {
@@ -51,6 +50,10 @@ export class UserComponent {
         this.name.set(result);
       }
     });
+  }
+
+  onUserSelect(user: any) {
+    this.router.navigate(['/user', user.id])
   }
 
 }
