@@ -38,7 +38,7 @@ export class UserComponent {
     tap(list => console.log('users from firestore:', list))
   );
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'adress', 'zip', 'city'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'street', 'zipCode', 'city'];
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddUser, {
